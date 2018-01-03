@@ -14,6 +14,7 @@ using Leap;
 namespace Leap.Unity {
   /** A physics model for our rigid hand made out of various Unity Collider. */
   public class RigidHand : SkeletalHand {
+		public FileManager manager;
     public override ModelType HandModelType {
       get {
         return ModelType.Physics;
@@ -27,9 +28,10 @@ namespace Leap.Unity {
 
     public override void InitHand() {
       base.InitHand();
+			manager.SetHand (this, Handedness);
     }
-
-    public override void UpdateHand() {
+	public override void UpdateHand() {
+			manager.SetHand (this, Handedness);
 
       for (int f = 0; f < fingers.Length; ++f) {
         if (fingers[f] != null) {

@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{5DE23803-7050-8EF6-0B75-A46982B19AAB}</ProjectGuid>
+    <ProjectGuid>{A5308C76-D9FA-100E-A68E-EE8372EC2BB8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -193,7 +193,7 @@
      <Compile Include="Assets\LeapMotion\Core\Scripts\VR\LeapVRTemporalWarping.cs" />
      <Compile Include="Assets\LeapMotion\Core\Scripts\VR\TemporalWarpingStatus.cs" />
      <Compile Include="Assets\LeapMotion\Core\Scripts\VR\VRHeightOffset.cs" />
-     <Compile Include="Assets\Scripts\Recording.cs" />
+     <Compile Include="Assets\Scripts\FileManager.cs" />
      <Compile Include="Assets\Tobii\DemoScenes\Scripts\CleanUI.cs" />
      <Compile Include="Assets\Tobii\DemoScenes\Scripts\CleanUIForCanvas.cs" />
      <Compile Include="Assets\Tobii\DemoScenes\Scripts\CleanUIOpacityOverrideForCanvas.cs" />
@@ -329,7 +329,7 @@
  <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
  </Reference>
  <Reference Include="LeapCSharp.NET3.5">
- <HintPath>D:/UnityProjects/leap motion test/Assets/LeapMotion/Core/Plugins/LeapCSharp.NET3.5.dll</HintPath>
+ <HintPath>D:/UnityProjects/leap motion with tobii test/Assets/LeapMotion/Core/Plugins/LeapCSharp.NET3.5.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Analytics">
  <HintPath>C:/Users/baicheng/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.analytics@1.0.1/UnityEngine.Analytics.dll</HintPath>
