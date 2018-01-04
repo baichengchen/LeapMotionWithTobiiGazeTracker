@@ -54,7 +54,7 @@ public class GazePlotter : MonoBehaviour
 
 		string path = "Assets/Resources/tobiidata.csv";
 		StreamWriter writer = new StreamWriter(path, false);
-		writer.WriteLine("Timestamp,"+"gazePoint.Viewport.x,"+"gazePoint.Viewport.y");
+		writer.WriteLine("Timestamp,"+"gazePoint.Viewport.x,"+"gazePoint.Viewport.y,"+"gazePointV2.x,"+"gazePointV2.y");
 		writer.Close ();
 
 
@@ -65,11 +65,11 @@ public class GazePlotter : MonoBehaviour
 	void Update()
 	{
 		GazePoint gazePoint = TobiiAPI.GetGazePoint();
-
+		Vector2 gazePointV2 = TobiiAPI.GetGazePoint ().Screen;
 		//Location is calculated by ViewPort from the bottom left.
 		string path = "Assets/Resources/tobiidata.csv";
 		StreamWriter writer = new StreamWriter (path, true);
-		writer.WriteLine (gazePoint.Timestamp+","+gazePoint.Viewport.x+","+gazePoint.Viewport.y);
+		writer.WriteLine (gazePoint.Timestamp+","+gazePoint.Viewport.x+","+gazePoint.Viewport.y+","+gazePointV2.x+","+gazePointV2.y);
 		writer.Close ();
 		//
 

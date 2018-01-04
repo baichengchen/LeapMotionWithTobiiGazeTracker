@@ -193,7 +193,7 @@
      <Compile Include="Assets\LeapMotion\Core\Scripts\VR\LeapVRTemporalWarping.cs" />
      <Compile Include="Assets\LeapMotion\Core\Scripts\VR\TemporalWarpingStatus.cs" />
      <Compile Include="Assets\LeapMotion\Core\Scripts\VR\VRHeightOffset.cs" />
-     <Compile Include="Assets\Scripts\FileManager.cs" />
+     <Compile Include="Assets\Scripts\LeapDataCollection.cs" />
      <Compile Include="Assets\Tobii\DemoScenes\Scripts\CleanUI.cs" />
      <Compile Include="Assets\Tobii\DemoScenes\Scripts\CleanUIForCanvas.cs" />
      <Compile Include="Assets\Tobii\DemoScenes\Scripts\CleanUIOpacityOverrideForCanvas.cs" />
@@ -329,7 +329,7 @@
  <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
  </Reference>
  <Reference Include="LeapCSharp.NET3.5">
- <HintPath>D:/UnityProjects/leap motion with tobii test/Assets/LeapMotion/Core/Plugins/LeapCSharp.NET3.5.dll</HintPath>
+ <HintPath>D:/Users/baicheng/Documents/GitHub/LeapMotionWithTobiiGazeTracker/leap motion with tobii test/Assets/LeapMotion/Core/Plugins/LeapCSharp.NET3.5.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Analytics">
  <HintPath>C:/Users/baicheng/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.analytics@1.0.1/UnityEngine.Analytics.dll</HintPath>
