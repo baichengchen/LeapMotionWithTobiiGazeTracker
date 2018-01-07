@@ -159,11 +159,6 @@ public class GazePlotter : MonoBehaviour
 		gazeOnScreen += (transform.forward * VisualizationDistance);
 		return Camera.main.ScreenToWorldPoint(gazeOnScreen);
 	}
-	public Vector3 ReturnToPixels(Vector3 point)
-	{
-		Vector3 point2 = point - (transform.forward * VisualizationDistance);
-		return point2;
-	}
 	private Vector3 Smoothify(Vector3 point)
 	{
 		if (!_hasHistoricPoint)
