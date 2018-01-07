@@ -7,7 +7,7 @@ public class TobiiDataCollection : MonoBehaviour {
 
 	private LimitedArrayList<CBCPoint> points;
 	private const float VisualizationDistance = 10f;
-	private const int toleranceRadius = 20;
+	private const int toleranceRadius = 30;
 
 	void Start () {
 		points = new LimitedArrayList<CBCPoint> ();
@@ -16,6 +16,7 @@ public class TobiiDataCollection : MonoBehaviour {
 		StreamWriter writer = new StreamWriter(path, false);
 		writer.WriteLine("Timestamp,"+"gazePoint.Viewport.x,"+"gazePoint.Viewport.y,"+"gazePointV2.x,"+"gazePointV2.y,");
 		writer.Close ();
+		Debug.Log ("/..."+1/Time.deltaTime);
 	}
 	
 	// Update is called once per frame
@@ -31,7 +32,9 @@ public class TobiiDataCollection : MonoBehaviour {
 		writer.WriteLine (gazePoint.Timestamp+","+gazePoint.Viewport.x+","+gazePoint.Viewport.y+","+gazePointV2.x+","+gazePointV2.y);
 		writer.Close ();
 		points.addPoint (new CBCPoint(gazePointV2));
+		print (averageDist ()+"..."+points.Count+"...."+Time.time);
 		if (wasFocused ()) {
+			print ("Focused on"+points.firstPoint().toVector3());
 			Vector3 focusedPoint = points.firstPoint().toVector3()+(transform.forward * VisualizationDistance);
 			GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
 			cube.transform.position = focusedPoint;
@@ -47,11 +50,18 @@ public class TobiiDataCollection : MonoBehaviour {
 		if (!points.isFull ()) {
 			return false;
 		}
+		return averageDist()>=0 && averageDist() < toleranceRadius;
+	}
+	public int averageDist()
+	{
 		int totalDis = 0;
 		CBCPoint p = points.firstPoint ();
 		foreach (CBCPoint point in points.ToArray()) {
-			totalDis += ((int)(p.distance(point)));
+			if (!point.isValid ())
+				return -1;
+			float dist = (p.distance (point));
+			totalDis += (int)dist;
 		}
-		return totalDis / 30 < toleranceRadius;
+		return totalDis/30;
 	}
 }

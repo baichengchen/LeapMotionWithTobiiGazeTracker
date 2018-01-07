@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LimitedArrayList<CBCPoint> : ArrayList{
-	private const int limit=30;
+	//1/Time.deltaTime
+	private const int limit=50;
 
 	public LimitedArrayList()
 	{}

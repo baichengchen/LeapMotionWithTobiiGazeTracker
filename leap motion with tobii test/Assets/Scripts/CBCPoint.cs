@@ -13,8 +13,12 @@ public class CBCPoint {
 	public CBCPoint(CBCPoint point)
 	{X = point.getX ();Y = point.getY ();}
 	public CBCPoint(Vector2 locationVector)
-	{X = ((int)(locationVector.x));Y = ((int)(locationVector.y));}
-
+	{
+		X = ((int)(locationVector.x));
+		Y = ((int)(locationVector.y));
+		if (float.IsNaN (locationVector.x)) {X = -1;}
+		if (float.IsNaN (locationVector.y)) {Y = -1;}
+	}
 	public int getX()
 	{return X;}
 	public int getY()
@@ -23,6 +27,10 @@ public class CBCPoint {
 	{X = x;}
 	public void setY(int y)
 	{Y = y;}
+	public bool isValid()
+	{
+		return X != -1 && Y != -1;
+	}
 	//Return true if p is in radius r with current point;
 	public bool inRadius(CBCPoint p,int r)
 	{
