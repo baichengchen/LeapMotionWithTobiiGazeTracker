@@ -1,8 +1,7 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class CBCPoint {
+public class CBCPoint{
 
 	private int X,Y;
 

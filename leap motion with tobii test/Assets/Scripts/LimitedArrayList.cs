@@ -19,6 +19,8 @@ public class LimitedArrayList<CBCPoint> : ArrayList{
 		}
 		return base.Add (value);
 	}
-	public CBCPoint firstPoint()
-	{return ((CBCPoint)(ToArray ()[0]));}
+	public CBCPoint getPoint(int index)
+	{
+		return (CBCPoint)(ToArray()[index]);
+	}
 }

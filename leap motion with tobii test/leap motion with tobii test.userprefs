@@ -2,11 +2,9 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\TobiiDataCollection.cs">
     <Files>
-      <File FileName="Assets\Scripts\TobiiDataCollection.cs" Line="29" Column="55" />
-      <File FileName="Assets\Scripts\LimitedArrayList.cs" Line="23" Column="1" />
-      <File FileName="Assets\Scripts\LeapDataCollection.cs" Line="22" Column="33" />
-      <File FileName="Assets\Scripts\CBCPoint.cs" Line="13" Column="33" />
-      <File FileName="Assets\Tobii\DemoScenes\Scripts\GazePlotter.cs" Line="158" Column="43" />
+      <File FileName="Assets\Scripts\CBCPoint.cs" Line="7" Column="2" />
+      <File FileName="Assets\Scripts\LimitedArrayList.cs" Line="2" Column="34" />
+      <File FileName="Assets\Scripts\TobiiDataCollection.cs" Line="16" Column="17" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

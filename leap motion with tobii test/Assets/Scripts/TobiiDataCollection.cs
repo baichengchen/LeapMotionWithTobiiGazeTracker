@@ -10,14 +10,24 @@ public class TobiiDataCollection : MonoBehaviour {
 	private const int toleranceRadius = 50;
 	public Transform objectToShow;
 
+	private LineRenderer lr;
+	private LimitedArrayList<CBCPoint> gazedPoints;
+
 	void Start () {
 		points = new LimitedArrayList<CBCPoint> ();
-
 		string path = "Assets/Resources/tobiidata.csv";
 		StreamWriter writer = new StreamWriter(path, false);
 		writer.WriteLine("Timestamp,"+"gazePoint.Viewport.x,"+"gazePoint.Viewport.y,"+"gazePointV2.x,"+"gazePointV2.y,"+"Average");
 		writer.Close ();
 		Debug.Log ("Estimated Frame Per Second:"+1/Time.deltaTime);
+
+		Debug.Log ("Drawing");
+		lr = this.gameObject.AddComponent<LineRenderer> ();
+		lr.startWidth = 0.5f;
+		lr.endWidth = 0.5f;
+		lr.startColor = Color.blue;
+		lr.endColor = Color.blue;
+		lr.positionCount = 2;
 	}
 	
 	// Update is called once per frame
@@ -35,10 +45,10 @@ public class TobiiDataCollection : MonoBehaviour {
 		points.addPoint (new CBCPoint(gazePointV2));
 		//If focused on the first point, pop something up
 		if (wasFocused ()) {
-			Vector3 coordinate = coordinateLocation (points.firstPoint ());
-			print ("Focused on:"+points.firstPoint().toVector3()+".........."+coordinate);
+			Vector3 coordinate = coordinateLocation (points.getPoint (0));
+			print ("Focused on:"+points.getPoint(0).toVector3()+".........."+coordinate);
 			Instantiate(objectToShow, coordinate, Quaternion.identity);
-
+			gazedPoints.addPoint (points.getPoint (0));
 			points.Clear ();
 		}
 		if (points.Count >=1 && averageDist ()==-1) {
@@ -47,10 +57,20 @@ public class TobiiDataCollection : MonoBehaviour {
 		if (!TobiiAPI.GetUserPresence ().IsUserPresent ()) {
 			points.Clear ();
 		}
+		Vector3[] data = new Vector3[points.Count];
+		lr.SetPositions(data);
+		if (points.Count > 0) {
+			for (int x = 0; x < data.Length; x++) {
+				data [x] = coordinateLocation(((CBCPoint)(points.getPoint (x))).toVector3 ());
+			}
+			lr.SetPositions (data);
+		}
 	}
 	public Vector3 coordinateLocation(CBCPoint point)
+	{return coordinateLocation (point.toVector3 ());}
+	public Vector3 coordinateLocation(Vector3 point)
 	{
-		Vector3 pt = point.toVector3 ();
+		Vector3 pt = point;
 		pt += (transform.forward * VisualizationDistance);
 		return Camera.main.ScreenToWorldPoint(pt);
 	}
@@ -71,7 +91,7 @@ public class TobiiDataCollection : MonoBehaviour {
 			return -1;
 		}
 		int totalDis = 0;
-		CBCPoint p = points.firstPoint ();
+		CBCPoint p = points.getPoint(0);
 		foreach (CBCPoint point in points.ToArray()) {
 			if (!point.isValid ()) {
 				return -1;
