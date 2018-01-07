@@ -1,8 +1,13 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\LeapMotion\Core\Scripts\Hands\RigidHand.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\LeapMotion\Core\Scripts\Hands\CapsuleHand.cs">
     <Files>
-      <File FileName="Assets\LeapMotion\Core\Scripts\Hands\RigidHand.cs" Line="39" Column="10" />
+      <File FileName="Assets\Tobii\DemoScenes\Scripts\GazePlotter.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\TobiiDataCollection.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\LimitedArrayList.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\LeapDataCollection.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\CBCPoint.cs" Line="1" Column="1" />
+      <File FileName="Assets\LeapMotion\Core\Scripts\Hands\CapsuleHand.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -193,7 +193,12 @@
      <Compile Include="Assets\LeapMotion\Core\Scripts\VR\LeapVRTemporalWarping.cs" />
      <Compile Include="Assets\LeapMotion\Core\Scripts\VR\TemporalWarpingStatus.cs" />
      <Compile Include="Assets\LeapMotion\Core\Scripts\VR\VRHeightOffset.cs" />
+     <Compile Include="Assets\Scripts\CBCLine.cs" />
+     <Compile Include="Assets\Scripts\CBCPoint.cs" />
      <Compile Include="Assets\Scripts\LeapDataCollection.cs" />
+     <Compile Include="Assets\Scripts\LimitedArrayList.cs" />
+     <Compile Include="Assets\Scripts\TobiiDataCollection.cs" />
+     <Compile Include="Assets\Scripts\WebCamCapture.cs" />
      <Compile Include="Assets\Tobii\DemoScenes\Scripts\CleanUI.cs" />
      <Compile Include="Assets\Tobii\DemoScenes\Scripts\CleanUIForCanvas.cs" />
      <Compile Include="Assets\Tobii\DemoScenes\Scripts\CleanUIOpacityOverrideForCanvas.cs" />

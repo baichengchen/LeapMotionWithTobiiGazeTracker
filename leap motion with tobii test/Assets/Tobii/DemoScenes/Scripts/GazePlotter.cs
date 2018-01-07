@@ -4,7 +4,6 @@
 
 using UnityEngine;
 using Tobii.Gaming;
-using System.IO;
 
 /// <summary>
 /// Draws the gaze point positions as a point cloud, or, if the use filtering
@@ -38,6 +37,7 @@ public class GazePlotter : MonoBehaviour
 	private bool _hasHistoricPoint;
 	private Vector3 _historicPoint;
 
+
 	public bool UseFilter
 	{
 		get { return _useFilter; }
@@ -51,27 +51,13 @@ public class GazePlotter : MonoBehaviour
 
 		_last = PointCloudSize - 1;
 
-
-		string path = "Assets/Resources/tobiidata.csv";
-		StreamWriter writer = new StreamWriter(path, false);
-		writer.WriteLine("Timestamp,"+"gazePoint.Viewport.x,"+"gazePoint.Viewport.y,"+"gazePointV2.x,"+"gazePointV2.y");
-		writer.Close ();
-
-
 		_gazeBubbleRenderer = GetComponent<SpriteRenderer>();
 		UpdateGazeBubbleVisibility();
 	}
 
 	void Update()
 	{
-		GazePoint gazePoint = TobiiAPI.GetGazePoint();
-		Vector2 gazePointV2 = TobiiAPI.GetGazePoint ().Screen;
-		//Location is calculated by ViewPort from the bottom left.
-		string path = "Assets/Resources/tobiidata.csv";
-		StreamWriter writer = new StreamWriter (path, true);
-		writer.WriteLine (gazePoint.Timestamp+","+gazePoint.Viewport.x+","+gazePoint.Viewport.y+","+gazePointV2.x+","+gazePointV2.y);
-		writer.Close ();
-		//
+		GazePoint gazePoint = TobiiAPI.GetGazePoint ();
 
 		if (gazePoint.IsRecent()
 			&& gazePoint.Timestamp > (_lastGazePoint.Timestamp + float.Epsilon))
@@ -173,7 +159,11 @@ public class GazePlotter : MonoBehaviour
 		gazeOnScreen += (transform.forward * VisualizationDistance);
 		return Camera.main.ScreenToWorldPoint(gazeOnScreen);
 	}
-
+	public Vector3 ReturnToPixels(Vector3 point)
+	{
+		Vector3 point2 = point - (transform.forward * VisualizationDistance);
+		return point2;
+	}
 	private Vector3 Smoothify(Vector3 point)
 	{
 		if (!_hasHistoricPoint)
