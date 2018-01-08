@@ -90,7 +90,6 @@
      <Compile Include="Assets\Tobii\Framework\Editor\EyeTrackingSettingsWindow.cs" />
      <Compile Include="Assets\Tobii\Framework\Editor\TobiiEulaCheck.cs" />
      <None Include="Assets\Tobii\DemoScenes\Shaders\Highlight\MobileBlur.shader" />
-     <None Include="Assets\003 Drawing Lines\src\BlackLine.shader" />
      <None Include="Assets\LeapMotion\Core\Resources\LeapCG.cginc" />
      <None Include="Assets\LeapMotion\Core\README_BEFORE_UPDATING.txt" />
      <None Include="Assets\LeapMotion\Core\readme.txt" />

@@ -51,9 +51,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\003 Drawing Lines\src\LinesGL.cs" />
-     <Compile Include="Assets\003 Drawing Lines\src\LinesGR.cs" />
-     <Compile Include="Assets\003 Drawing Lines\src\LinesLR.cs" />
      <Compile Include="Assets\LeapMotion\Core\Scripts\Algorithms\SlidingMax.cs" />
      <Compile Include="Assets\LeapMotion\Core\Scripts\Algorithms\SmoothedFloat.cs" />
      <Compile Include="Assets\LeapMotion\Core\Scripts\Algorithms\SmoothedQuaternion.cs" />
@@ -294,7 +291,6 @@
      <Compile Include="Assets\Tobii\Framework\UserPresence.cs" />
      <Compile Include="Assets\Tobii\Plugins\SimpleJSON.cs" />
      <None Include="Assets\Tobii\DemoScenes\Shaders\Highlight\MobileBlur.shader" />
-     <None Include="Assets\003 Drawing Lines\src\BlackLine.shader" />
      <None Include="Assets\LeapMotion\Core\Resources\LeapCG.cginc" />
      <None Include="Assets\LeapMotion\Core\README_BEFORE_UPDATING.txt" />
      <None Include="Assets\LeapMotion\Core\readme.txt" />

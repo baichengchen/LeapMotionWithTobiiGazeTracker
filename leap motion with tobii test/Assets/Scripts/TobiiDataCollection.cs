@@ -10,11 +10,14 @@ public class TobiiDataCollection : MonoBehaviour {
 	private const int toleranceRadius = 50;
 	public Transform objectToShow;
 
-	private LineRenderer lr;
+	private LineRenderer LR;
+	private LineRenderer gazedLR;
 	private LimitedArrayList<CBCPoint> gazedPoints;
 
 	void Start () {
 		points = new LimitedArrayList<CBCPoint> ();
+		gazedPoints = new LimitedArrayList<CBCPoint> ();
+
 		string path = "Assets/Resources/tobiidata.csv";
 		StreamWriter writer = new StreamWriter(path, false);
 		writer.WriteLine("Timestamp,"+"gazePoint.Viewport.x,"+"gazePoint.Viewport.y,"+"gazePointV2.x,"+"gazePointV2.y,"+"Average");
@@ -22,13 +25,21 @@ public class TobiiDataCollection : MonoBehaviour {
 		Debug.Log ("Estimated Frame Per Second:"+1/Time.deltaTime);
 
 		Debug.Log ("Drawing");
-		lr = this.gameObject.AddComponent<LineRenderer> ();
-		lr.startWidth = 0.5f;
-		lr.endWidth = 0.5f;
-		lr.startColor = Color.blue;
-		lr.endColor = Color.blue;
-		lr.positionCount = 2;
-	}
+
+		LR = this.gameObject.AddComponent<LineRenderer> ();
+		//gazedLR = this.gameObject.AddComponent<LineRenderer> ();
+
+		LR.startWidth = 0.2f;
+		LR.endWidth = 0.2f;
+		LR.startColor = Color.black;
+		LR.endColor = Color.blue;
+		/*
+		gazedLR.startWidth = 0.2f;
+		gazedLR.endWidth = 0.2f;
+		gazedLR.startColor = Color.blue;
+		gazedLR.endColor = Color.black;
+		*/
+		}
 	
 	// Update is called once per frame
 	void Update () {
@@ -58,13 +69,23 @@ public class TobiiDataCollection : MonoBehaviour {
 			points.Clear ();
 		}
 		Vector3[] data = new Vector3[points.Count];
-		lr.SetPositions(data);
+		LR.positionCount = data.Length;
 		if (points.Count > 0) {
 			for (int x = 0; x < data.Length; x++) {
 				data [x] = coordinateLocation(((CBCPoint)(points.getPoint (x))).toVector3 ());
 			}
-			lr.SetPositions (data);
 		}
+		LR.SetPositions (data);
+		/*
+		Vector3[] gazedData = new Vector3[points.Count];
+		gazedLR.positionCount = gazedData.Length;
+		if (gazedPoints.Count > 0) {
+			for (int x = 0; x < gazedData.Length; x++) {
+				gazedData [x] = coordinateLocation(((CBCPoint)(gazedPoints.getPoint (x))).toVector3 ());
+			}
+		}
+		gazedLR.SetPositions(gazedData);
+		*/
 	}
 	public Vector3 coordinateLocation(CBCPoint point)
 	{return coordinateLocation (point.toVector3 ());}
