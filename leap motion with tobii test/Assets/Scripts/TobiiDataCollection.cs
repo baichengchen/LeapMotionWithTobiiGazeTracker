@@ -11,7 +11,7 @@ public class TobiiDataCollection : MonoBehaviour {
 	public Transform objectToShow;
 
 	private LineRenderer LR;
-	private LineRenderer gazedLR;
+	//private LineRenderer gazedLR;
 	private LimitedArrayList<CBCPoint> gazedPoints;
 
 	void Start () {
@@ -20,7 +20,7 @@ public class TobiiDataCollection : MonoBehaviour {
 
 		string path = "Assets/Resources/tobiidata.csv";
 		StreamWriter writer = new StreamWriter(path, false);
-		writer.WriteLine("Timestamp,"+"gazePoint.Viewport.x,"+"gazePoint.Viewport.y,"+"gazePointV2.x,"+"gazePointV2.y,"+"Average");
+		writer.WriteLine("Timestamp,"+"gazePoint.Viewport.x,"+"gazePoint.Viewport.y,"+"gazePointV2.x,"+"gazePointV2.y,"+"Average,Focuses");
 		writer.Close ();
 		Debug.Log ("Estimated Frame Per Second:"+1/Time.deltaTime);
 
@@ -51,17 +51,23 @@ public class TobiiDataCollection : MonoBehaviour {
 		//Project to world method//
 		//Vector3 p = gazePointV2+(transform.forward * VisualizationDistance);
 		//This brings the on screen point 10 units forward.   Original:(1920,1080,0)->After:(1920,1080,10)
-		writer.WriteLine (gazePoint.Timestamp+","+gazePoint.Viewport.x+","+gazePoint.Viewport.y+","+gazePointV2.x+","+gazePointV2.y+","+averageDist());
-		writer.Close ();
+		writer.Write (gazePoint.Timestamp+","+gazePoint.Viewport.x+","+gazePoint.Viewport.y+","+gazePointV2.x+","+gazePointV2.y+","+averageDist());
+
 		points.addPoint (new CBCPoint(gazePointV2));
 		//If focused on the first point, pop something up
 		if (wasFocused ()) {
 			Vector3 coordinate = coordinateLocation (points.getPoint (0));
-			print ("Focused on:"+points.getPoint(0).toVector3()+".........."+coordinate);
-			Instantiate(objectToShow, coordinate, Quaternion.identity);
+
+			writer.WriteLine (",True+"+points.getPoint (0).toVector3 ());
+
+			Instantiate (objectToShow, coordinate, Quaternion.identity);
 			gazedPoints.addPoint (points.getPoint (0));
 			points.Clear ();
+		
+		} else {
+			writer.WriteLine(",False");
 		}
+		writer.Close ();
 		if (points.Count >=1 && averageDist ()==-1) {
 			points.Clear ();
 		}

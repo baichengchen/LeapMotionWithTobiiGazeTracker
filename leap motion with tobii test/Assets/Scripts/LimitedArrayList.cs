@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class LimitedArrayList<CBCPoint> : ArrayList{
 	//1/Time.deltaTime
-	private const int limit=50;
+	private int limit=50;
 
 	public LimitedArrayList()
 	{}
+	public LimitedArrayList(int lmt)
+	{limit = lmt;}
 	public bool isFull()
 	{
 		return Count == limit;

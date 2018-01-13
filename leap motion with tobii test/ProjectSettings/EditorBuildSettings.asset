@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Objects/LeapWithTobiiRecording.unity
+    guid: a5015cc085eaa7e4db3ccfa5d3c999c1
+  - enabled: 1
+    path: Assets/Objects/LeapWithTobiiReading.unity
+    guid: 9320b7407c229d94da053400864bf0f6
